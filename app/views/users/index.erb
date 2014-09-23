@@ -1,0 +1,32 @@
+<h1>MUSIC MAYHAM</h1>
+<% if session[:username] == nil %>
+  Login:
+    <form method="post" action="/users/login">
+      <div>
+        <label>User Name:</label>
+        <input type="text" name="username" value="<%= @user && @user.username %>">
+      </div>
+      <div>
+        <label>Password:</label>
+        <input type="password" name="password">
+      </div>
+      <div>
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+<% else %>
+  Welcome <%= session[:username] %> your id is <%= session[:id] %>
+  <% @music_videos.each do |music_video| %>
+  <div class="music_video">
+    <iframe id="ytplayer" type="text/html" width="640" height="390"
+  src="http://www.youtube.com/embed/<%= music_video.url %>?autoplay=0"
+  frameborder="0" ></iframe>
+    <h3> <small>(posted by: <%= music_video.user_name %>)</small></h3>
+  </div>
+<% end %>
+<% end %>
+<iframe id="ytplayer" type="text/html" width="640" height="390"
+  src="http://teaorbit.com/lighthouse-september"
+  frameborder="0" ></iframe>
+
+

@@ -1,0 +1,24 @@
+<% if @music_video && @music_video.errors.any? %>
+  <div>
+    <strong>Some issues with your message, please fix them:</strong>
+    <ul>
+      <% @music_video.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<form method="post" action="/music_videos">
+  <div>
+    <label>Url:</label>
+    <input type="text" name="url" value="<%= @music_video && @music_video.url %>">
+  </div>
+  <div>
+    <label>User Name:</label>
+    <input type="text" name="user_name">
+  </div>
+  <div>
+    <input type="submit" value="Submit">
+  </div>
+</form>
