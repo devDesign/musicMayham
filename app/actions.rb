@@ -74,9 +74,10 @@ get '/music_videos' do
     downvote = @downvotes.where(:music_video_id => music_video.id).count
     music_video.total_upvotes = upvote
     music_video.total_downvotes = downvote
+    music_video.hotness = ((upvote*10) - (downvote*10) + 100) / (TimeDifference.between(music_video.created_at, Time.now).in_days + 1)
     music_video.save
   end
-  @music_videos_sorted = MusicVideo.order(total_upvotes: :desc)
+  @music_videos_sorted = MusicVideo.order(hotness: :desc)
   erb :'music_videos/index'
 end
 
