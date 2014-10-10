@@ -1,10 +1,8 @@
-Sinatra
+Music Mayham
 =============
 
-Brought to you by Lighthouse Labs
+youtube embedded video player with voting system
 
-## Getting Started
+voting is based on "hotness factor" algorithm
 
-1. `bundle install`
-2. `shotgun -p 3000 -o 0.0.0.0`
-3. Visit `http://localhost:3000/` in your browser
+video titles are scraped from youtube using nokogiri + regex
